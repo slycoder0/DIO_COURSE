@@ -1,11 +1,20 @@
-// -> Criar um item com subtotal correto
-async function createItem(name, price, quantity) {
-  return {
-    name,
-    price,
-    quantity,
-    subtotal: () => price * quantity,
-  };
+// Classe para criar o item
+class Item {
+  constructor(name, price, quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+
+  subtotal() {
+    return this.price * this.quantity;
+  }
+
+  updateSubtotal() {
+    return this.subtotal();
+  }
 }
 
-export default createItem;
+export default function createItem(name, price, quantity) {
+  return new Item(name, price, quantity);
+}
